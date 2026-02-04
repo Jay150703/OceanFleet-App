@@ -1,5 +1,8 @@
+package com.jayanthi.oceanfleet;
+
 import com.jayanthi.oceanfleet.model.Vessel;
 import com.jayanthi.oceanfleet.util.VesselUtil;
+import java.util.List;
 
 public class Main {
 
@@ -7,22 +10,21 @@ public class Main {
 
         VesselUtil util = new VesselUtil();
 
-        // Adding vessels
         util.addVesselPerformance(new Vessel("V001", "Sea King", 25.5, "Cargo"));
         util.addVesselPerformance(new Vessel("V002", "Ocean Queen", 30.2, "Passenger"));
+        util.addVesselPerformance(new Vessel("V003", "Blue Whale", 30.2, "Research"));
 
-        // Searching vessel
-        Vessel result = util.getVesselById("V001");
+        List<Vessel> highPerf = util.getHighPerformanceVessels();
 
-        if (result != null) {
+        System.out.println("High Performance Vessels:");
+
+        for (Vessel v : highPerf) {
             System.out.println(
-                    result.getVesselId() + " | " +
-                            result.getVesselName() + " | " +
-                            result.getVesselType() + " | " +
-                            result.getAverageSpeed() + " knots"
+                    v.getVesselId() + " | " +
+                            v.getVesselName() + " | " +
+                            v.getVesselType() + " | " +
+                            v.getAverageSpeed() + " knots"
             );
-        } else {
-            System.out.println("Vessel not found");
         }
     }
 }

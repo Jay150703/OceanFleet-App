@@ -8,17 +8,25 @@ public class VesselUtil {
 
     private List<Vessel> vesselList;
 
-    // Constructor to initialize list
     public VesselUtil() {
         vesselList = new ArrayList<>();
     }
 
-    // Method to add vessel performance
     public void addVesselPerformance(Vessel vessel) {
         vesselList.add(vessel);
     }
 
-    // Optional helper method (useful later)
+    public Vessel getVesselById(String vesselId) {
+
+        for (Vessel vessel : vesselList) {
+            if (vessel.getVesselId().equals(vesselId)) {
+                return vessel;
+            }
+        }
+
+        return null;
+    }
+
     public List<Vessel> getVesselList() {
         return vesselList;
     }

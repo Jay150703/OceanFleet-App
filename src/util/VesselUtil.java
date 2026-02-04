@@ -51,4 +51,15 @@ public class VesselUtil {
 
         return result;
     }
+
+    // ⭐ UC6 NEW METHOD – Reusable Display Logic
+    public void displayVessel(Vessel vessel) {
+
+        System.out.println(
+                vessel.getVesselId() + " | " +
+                        vessel.getVesselName() + " | " +
+                        vessel.getVesselType() + " | " +
+                        vessel.getAverageSpeed() + " knots"
+        );
+    }
 }

@@ -8,10 +8,11 @@ import java.util.Scanner;
 
 public class UserInterface {
 
+    private VesselUtil util = new VesselUtil();
+
     public void startApplication() {
 
         Scanner sc = new Scanner(System.in);
-        VesselUtil util = new VesselUtil();
 
         System.out.println("Enter number of vessels:");
         int n = Integer.parseInt(sc.nextLine());
@@ -33,29 +34,26 @@ public class UserInterface {
             util.addVesselPerformance(vessel);
         }
 
+        // Search Vessel
         System.out.println("Enter vessel ID to search:");
         String searchId = sc.nextLine();
 
         Vessel found = util.getVesselById(searchId);
 
         if (found != null) {
-            System.out.println(found.getVesselId() + " | " +
-                    found.getVesselName() + " | " +
-                    found.getVesselType() + " | " +
-                    found.getAverageSpeed() + " knots");
+            System.out.println("Vessel Found:");
+            util.displayVessel(found);
         } else {
             System.out.println("Vessel not found");
         }
 
+        // High Performance
         System.out.println("\nHigh Performance Vessels:");
 
         List<Vessel> highPerf = util.getHighPerformanceVessels();
 
         for (Vessel v : highPerf) {
-            System.out.println(v.getVesselId() + " | " +
-                    v.getVesselName() + " | " +
-                    v.getVesselType() + " | " +
-                    v.getAverageSpeed() + " knots");
+            util.displayVessel(v);
         }
     }
 }
